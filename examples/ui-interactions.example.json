@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "interactions": [
+    {
+      "id": "calendar.open-task",
+      "surface": "Calendar task title",
+      "trigger": "Click or Enter on focused task title",
+      "result": "Centered task-details dialog opens for selected task ID",
+      "data_effect": "none",
+      "persistence": "selected task stored only for active view; no mutation",
+      "failure_recovery": "If task no longer exists, show message and preserve Calendar navigation",
+      "test_ref": "browser/calendar-open-task"
+    },
+    {
+      "id": "task.save-priority",
+      "surface": "Task-details dialog",
+      "trigger": "Select priority and activate Save",
+      "result": "Dialog closes; all views reflect the saved priority",
+      "data_effect": "Updates priority of selected task ID",
+      "persistence": "Reload preserves updated task priority",
+      "failure_recovery": "On storage failure, keep dialog open and show error",
+      "test_ref": "browser/save-priority-reload"
+    }
+  ]
+}
