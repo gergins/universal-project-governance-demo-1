@@ -45,3 +45,35 @@ No phase automatically inherits another phase's PASS. When the browser runner is
 Start with a single coordinator. Add delegated review only for demonstrable benefit. Tracing describes the agent run but is not proof of browser UX. Tool/handoff guardrails do not replace independent authorization, and handoffs must not expand permissions. Prefer existing tools and deterministic tests over creating an agent to click every UI element.
 
 References: OpenAI Agents SDK (https://openai.github.io/openai-agents-python/), OpenAI practical agents guide (https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/), and OpenAI Agents API overview (https://developers.openai.com/api/docs/guides/agents).
+
+## Reusable implementation sequence (each new UI slice)
+
+1. **Inventory:** enumerate visible controls on the affected views. Mark each as actionable or intentionally static, including keyboard operation and empty/error states.
+2. **Contract:** record the action, expected target record, shared data effect, persistence and recovery in `ui-interactions.json`. Validate before implementation.
+3. **Reuse:** centralize shared actions (for example `openTask(taskId)`); avoid independent editors and persistence logic per view.
+4. **Implement one vertical journey:** user trigger → view/controller → real data → save → other view → reload.
+5. **Verify separately:** logic tests, real-browser interaction tests, screen layout evidence, and human acceptance. Fix only observed failures.
+6. **Report:** attach exact commit, environment, commands, pass/fail counts, browser artifact path and open gaps. A ZIP distribution is not itself a verified release.
+
+**Timebox discovery:** a short review before coding, proportional to risk; do not let completeness analysis block a working small slice indefinitely.
+
+## Interaction coverage and visual acceptance
+
+Review all newly added or touched: navigation items, task/project cards, dates, buttons, row actions, forms, dialogs, filters, lists, empty states and errors. A visual task card is not complete merely because it renders. Its interaction must select the correct entity. Screenshots need to represent the actual running implementation, never unrelated design references.
+
+Use `examples/browser-task-journey.spec.example.ts` as a *porting example* for an app that already uses Playwright. Adapt its accessibility selectors to the actual application, and supply an application-specific running server. This framework does not install browsers, enable CI or claim those example tests were executed.
+
+## Evidence record (per slice)
+
+| Field | Required value |
+|---|---|
+| Source identity | repository, branch, commit SHA |
+| Scope | affected pages and interactions |
+| Contract | validator command and result |
+| Logic tests | command, counts, outcome |
+| Browser interaction | browser, app URL/environment, command, result, trace/screenshot path |
+| Visual acceptance | viewport(s), real screenshot review and findings |
+| User acceptance | accepted / corrections requested / not tested |
+| Open risks | precise failures, blockers and next owner |
+
+No status is inferred from another gate. A browser runner that cannot start is **BLOCKED**, not **PASS**. Only merge or release according to the existing risk-adaptive gates.
