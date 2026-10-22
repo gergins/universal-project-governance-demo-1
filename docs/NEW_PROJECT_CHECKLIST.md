@@ -1,0 +1,11 @@
+# New repository configuration checklist
+- [ ] Replace project manifest placeholders and list applicable domain risks.
+- [ ] Set exact repository and primary branch.
+- [ ] Add architecture, capabilities, requirements, ADRs and evidence-driven delivery stages.
+- [ ] Identify owners/approvers for security, privacy, accessibility, operations and legal where relevant.
+- [ ] Specify test commands, environment inventory and rollback plans.
+- [ ] Review tool permissions separately for ChatGPT, Work, Codex, editor, PowerShell and CI.
+- [ ] Configure branch protections only after required checks actually run reliably.
+- [ ] Integrate providers only after verifying exact tenant, account and resource identity.
+- [ ] Validate negative scenarios: bad identity, failed test, offline CI, forged output, prompt injection, unauthorized deployment.
+- [ ] Keep VRS-specific product or CI blockers out of other projects.

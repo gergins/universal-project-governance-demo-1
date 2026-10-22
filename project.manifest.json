@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "framework_version": "2.3.0",
+  "template": {
+    "status": "master",
+    "framework_source_repository": "gergins/universal-project-governance",
+    "framework_source_commit": null
+  },
+  "project": {
+    "name": "REPLACE_ME",
+    "repository": "OWNER/REPO",
+    "description": "REPLACE_WITH_PRODUCT_PURPOSE",
+    "stage": "discovery",
+    "owner": "REPLACE_ME"
+  },
+  "ci": {
+    "status": "NOT_CONFIGURED",
+    "last_verified_run": null
+  },
+  "release": {
+    "production_allowed": false,
+    "required_human_approvals": [
+      "product_owner",
+      "security_privacy",
+      "operations"
+    ]
+  },
+  "execution_architecture": {
+    "mode": "NOT_SELECTED",
+    "authorization_service_configured": false,
+    "execution_gateway_configured": false,
+    "registered_capabilities": []
+  },
+  "orchestration": {
+    "mode": "NOT_SELECTED",
+    "enabled": false,
+    "coordinator_configured": false,
+    "specialists": [],
+    "evaluation_status": "NOT_RUN"
+  },
+  "assurance": {
+    "status": "DESIGN_ONLY",
+    "independent_assessment": "NOT_PERFORMED",
+    "openai_endorsement": "NOT_CLAIMED"
+  },
+  "capability_discovery": {
+    "catalogue": "docs/CAPABILITY_CATALOGUE.md",
+    "selected": [],
+    "selection_status": "NOT_STARTED"
+  },
+  "notes": "Master template is documentation and read-only proof; no cloud connections or runtime permissions supplied."
+}
